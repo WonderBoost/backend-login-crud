@@ -31,8 +31,19 @@ app.use(session({
 // Invocamos al modulo de conexión de db 
 const connection = require('./database/db');
 
+//render de vistas
 app.get('/', (req, res) =>{
-    res.render('');
+    res.render('index');
+})
+
+app.get('/login', (req, res) =>{
+    res.render('login');
+})
+
+//Registro de users
+
+app.post('/login', async (req, res) => {
+    
 })
 
 app.listen(3000, (req, res) => {
