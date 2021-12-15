@@ -41,9 +41,19 @@ app.get('/login', (req, res) =>{
 })
 
 //Registro de users
-
-app.post('/login', async (req, res) => {
-    
+app.post('/register', async (req, res) => {
+    const user = req.body.user;
+    const name = req.body.name;
+    const email = req.body.email;
+    const pass = req.body.pass;
+    let passwordHaash = await bcryptjs.hash(pass, 8);
+    connection.query('INSERT INTO users SET ?', {user:user, name:name, email:email, pass:passwordHaash}, async(error, results) => {
+        if(error){
+            console.log(error);
+        }else{
+            res.send('Registro exitoso')
+        }
+    })
 })
 
 app.listen(3000, (req, res) => {
