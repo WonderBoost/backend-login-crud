@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 
+
 //setting urlencoded para  para capturar datos del form sin errores
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -51,7 +52,15 @@ app.post('/register', async (req, res) => {
         if(error){
             console.log(error);
         }else{
-            res.send('Registro exitoso')
+            res.render('login',{
+                alert: true,
+                alertTitle: "Registration",
+                alertMessage: "Registro exitoso",
+                alertIcon: 'success',
+                showConfirmButton:false,
+                timer: 1500,
+                ruta: ''
+            })
         }
     })
 })

@@ -30,10 +30,10 @@
             <!--Formulario de login y registro-->
             <div class="container-login-register">
                 <!--login-->
-                <form action="auth" method="post" class="form-login">
+                <form action="/auth" method="post" class="form-login">
                     <h2>Iniciar Sesión</h2>
-                    <input type="text" name="user1" id="user1" placeholder="Usuario" >
-                    <input type="password" name="pass1" id="pass1" placeholder="Contraseña" >
+                    <input type="text" name="user-auth" id="user1" placeholder="Usuario" >
+                    <input type="password" name="pass-auth" id="pass1" placeholder="Contraseña" >
                     <button type="submit" value="login">Entrar</button>
                 </form>
                 <!--Registro-->
@@ -49,5 +49,20 @@
         </div>
     </main>
     <script src="resources/js/login.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer  %>
+            }).then(() =>{
+                window.location='/ <%= %> '
+            })
+        </script>
+        <% } %>
 </body>
 </html>
