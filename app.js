@@ -31,11 +31,10 @@ app.use(session({
 
 // Invocamos al modulo de conexión de db 
 const connection = require('./database/db');
+const res = require('express/lib/response');
 
 //render de vistas
-app.get('/', (req, res) =>{
-    res.render('index');
-})
+
 
 app.get('/login', (req, res) =>{
     res.render('login');
@@ -54,14 +53,82 @@ app.post('/register', async (req, res) => {
         }else{
             res.render('login',{
                 alert: true,
-                alertTitle: "Registration",
-                alertMessage: "Registro exitoso",
+                alertTitle: "Registro de usuario",
+                alertMessage: "Exitoso",
                 alertIcon: 'success',
                 showConfirmButton:false,
-                timer: 1500,
-                ruta: ''
+                timer: 2000,
+                ruta: 'login'
             })
         }
+    })
+})
+
+//Autenticación de usuarios
+app.post('/auth', async (req, res) =>{
+    const user = req.body.userAuth;
+    const pass = req.body.passAuth;
+    let passwordHaash = await bcryptjs.hash(pass, 8);
+    console.log(user, pass, passwordHaash, 'resultados aca');
+    if(user && pass){
+        connection.query('SELECT * FROM  users WHERE user = ?', [user], async (error, results) => {
+            console.log(results, 'resultados aca');
+            if(results.length == 0 || !(await bcryptjs.compare(pass, results[0].pass))){
+                res.render('login', {
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "Usuario y/o password incorrectas",
+                    alertIcon: "error",
+                    showConfirmButton: true,
+                    timer: false,
+                    ruta: 'login'
+                });
+            }else{
+                req.session.loggedin = true;
+                req.session.name = results[0].name;
+                res.render('login', {
+                    alert: true,
+                    alertTitle: "Conexión exitosa",
+                    alertMessage: "Login correcto",
+                    alertIcon: "success",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    ruta: 'home'
+                });
+            }
+        })
+    }else{
+        res.render('login', {
+            alert: true,
+            alertTitle: "Campo vacío",
+            alertMessage: "Por favor ingrese usuario y/o contraseña",
+            alertIcon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+            ruta: 'login'
+        });
+    }
+})
+
+//Auth pages
+app.get('/home', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('index',{
+            login: true,
+            name: req.session.name
+        });
+    }else{
+        res.render('index', {
+            login:false,
+            name:'Debe iniciar sesión'
+        })
+    }
+})
+
+// Logout
+app.get('/logout', (req, res) => {
+    req.session.destroy(() =>{
+        res.redirect('login')
     })
 })
 
