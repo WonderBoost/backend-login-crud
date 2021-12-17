@@ -40,6 +40,10 @@ app.get('/login', (req, res) =>{
     res.render('login');
 })
 
+app.get('/portfolio-details', (req, res) =>{
+    res.render('portfolio-details');
+})
+
 //Registro de users
 app.post('/register', async (req, res) => {
     const user = req.body.user;
@@ -133,5 +137,5 @@ app.get('/logout', (req, res) => {
 })
 
 app.listen(3000, (req, res) => {
-    console.log('Server Running in http://localhost:3000')
+    console.log('Server Running in http://localhost:3000/login')
 })

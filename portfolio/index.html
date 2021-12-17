@@ -10,32 +10,33 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="resources/assets/img/j.jpg" rel="icon">
+  <link href="assets/img/j.jpg" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
-  <link href="resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" type="text/css">
-  <link href="resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" type="text/css">
-  <link href="resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" type="text/css">
-  <link href="resources/assets/vendor/remixicon/remixicon.css" rel="stylesheet" type="text/css">
-  <link href="resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link rel="stylesheet" href="resources/css/portfolio.css">
+  <link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
-  <% if (login) { %>
+
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="container">
 
       <h1><a href="index.html">José Sánchez</a></h1>
       <h2><span>Full stack developer</span> </h2>
+
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link active" href="#header">Inicio</a></li>
@@ -44,8 +45,6 @@
           <li><a class="nav-link" href="#services">Servicios</a></li>
           <li><a class="nav-link" href="#portfolio">Portafolio</a></li>
           <li><a class="nav-link" href="#contact">Contacto</a></li>
-          <li><a class="nav-link">Visitante:  <%=  name %></a></li>
-          <li><a class="nav-link" href="logout">Salir</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -73,7 +72,7 @@
 
       <div class="row">
         <div class="col-lg-4" data-aos="fade-right">
-          <img src="resources/assets/img/jose2.jpg" class="img-fluid" alt="">
+          <img src="assets/img/jose2.jpg" class="img-fluid" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3> Desarrollador full stack</h3>
@@ -389,13 +388,13 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <img src="resources/assets/img/portfolio/rickandmorty.png" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/rickandmorty.png" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Rick and Morty API</h4>
               <p>App</p>
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/rickandmorty.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -403,13 +402,13 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <img src="resources/assets/img/portfolio/calculator.png" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/calculator.png" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Calculadora</h4>
               <p>Web</p>
               <div class="portfolio-links">
-                <a href="resources/assets/img/portfolio/calculator.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                <a href="assets/img/portfolio/calculator.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
           </div>
@@ -470,35 +469,18 @@
   </section><!-- End Contact Section -->
 
 
-    <%}else { %>
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container">
-
-      <h1><a>Debe iniciar Sesión</a></h1>
-      <h2><a href="login">Iniciar sesión</a></h2>
-      
-    </div>
-  </header><!-- End Header -->
-  <% } %> 
-
   <!-- Vendor JS Files -->
-  <script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-  <script src="resources/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
   <!-- Main JS File -->
-  <script src="resources/assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 
 </html>
-
-
-
-    
-    
