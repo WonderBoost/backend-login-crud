@@ -49,9 +49,10 @@ app.post('/register', async (req, res) => {
     const user = req.body.user;
     const name = req.body.name;
     const email = req.body.email;
+    const rol = req.body.rol;
     const pass = req.body.pass;
     let passwordHaash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', {user:user, name:name, email:email, pass:passwordHaash}, async(error, results) => {
+    connection.query('INSERT INTO users SET ?', {user:user, name:name, email:email, rol:rol, pass:passwordHaash}, async(error, results) => {
         if(error){
             console.log(error);
         }else{
@@ -134,6 +135,21 @@ app.get('/logout', (req, res) => {
     req.session.destroy(() =>{
         res.redirect('login')
     })
+})
+
+//crud
+// view
+
+app.get('/view', (req, res) => {
+    res.render('index')
+    // connection.query('SELECT * FROM project', (error, results)=>{
+    //     if (error) {
+    //         throw error;
+    //     }else{
+    //         res.send(results);
+    //     }
+    // })
+        
 })
 
 app.listen(3000, (req, res) => {
